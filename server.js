@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
 const knex = require('knex')
+const morgan = require('morgan');
 
 const register = require('./controllers/register');
 const signin = require('./controllers/signin');
@@ -21,9 +22,10 @@ const db = knex({
 
 const app = express();
 
-// don't forget parsing data we get !!
-app.use(bodyParser.json());  
+app.use(morgan('combined'))
+app.use(bodyParser.json());  // don't forget parsing data we get !!
 app.use(cors())
+
 
 app.get('/', (req, res) => { res.send('it is working!') })
 app.post('/signin', signin.handleSignin(db, bcrypt))
