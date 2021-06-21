@@ -9,6 +9,15 @@ services:
     build: ./
     command: npm start
     working_dir: /usr/src/smart-brain-api
+    environment:
+      POSTGRES_USER: chansoo
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: smart-brain-docker
+      POSTGRES_HOST: postgres
+    # deleted 'links' has replaced by networks  
+    # links:
+    #   - postgres
+    #   - redis
     ports:
       - "80:80"
     volumes:
@@ -16,7 +25,11 @@ services:
 
   # Postgres
   postgres:
-    image: postgres
+    environment:
+      POSTGRES_USER: chansoo
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: smart-brain-docker
+      POSTGRES_HOST: postgres
+    build: ./postgres
     ports:
       - "5432:5432"
-
