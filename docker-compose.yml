@@ -1,4 +1,5 @@
-version: '3.8'
+# The version sould be 3.3 since it's compatible with Redis
+version: '3.3'
 
 services:
 
@@ -14,10 +15,10 @@ services:
       POSTGRES_PASSWORD: 1234
       POSTGRES_DB: smart-brain-docker
       POSTGRES_HOST: postgres
-    # deleted 'links' has replaced by networks  
-    # links:
-    #   - postgres
-    #   - redis
+      REDIS_URI: redis://redis:6379
+    links:
+      - postgres
+      - redis
     ports:
       - "80:80"
     volumes:
@@ -33,3 +34,9 @@ services:
     build: ./postgres
     ports:
       - "5432:5432"
+
+  # Redis
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
