@@ -63,6 +63,7 @@ const signinAuthentication = (db, bcrypt) => (req, res) => {
 	return authorization ? getAuthTokenId(req, res) : 
 		handleSignin(db, bcrypt, req, res)
 			.then(data => {
+				// console.log('signin data :\n', data)
 				return data.id && data.email ? createSessions(data) : Promise.reject(data)
 			})
 			.then(session => res.json(session))
