@@ -10,3 +10,7 @@
 5. Clone the repository
 6. Run ```npm install``` , ```npm start``` 
 7. Test out the app
+
+## Demonstration
+
+![](./demo_readme.gif)
