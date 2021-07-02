@@ -43,8 +43,8 @@ app.post('/imageurl', auth.requireAuth, (req, res) => { image.handleApiCall(req,
 // 	console.log(`app is running on port ${process.env.PORT}`);
 // })
 
-app.listen(443, '0.0.0.0', ()=>{
-	console.log(`the server is running on port 443`);
+app.listen(80, '0.0.0.0', ()=>{
+	console.log(`the server is running on port 80`);
 })
 // arrow function will run right after the 'listen' happens on port 3000.
 
